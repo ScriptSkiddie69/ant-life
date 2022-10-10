@@ -120,7 +120,7 @@ local Tab5 = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-Tab4:AddToggle({
+Tab5:AddToggle({
 	Name = "Autofarm Larvae food",
 	Default = false,
 	Callback = function(bool)
