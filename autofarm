@@ -1,0 +1,139 @@
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+OrionLib:MakeNotification({
+	Name = "Thanks for using",
+	Content = "Made by gaming#5933 join butter hub cuz its a very cool pro server",
+	Image = "rbxassetid://4483345998",
+	Time = 69
+})
+local Tab4 = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab4:AddButton({
+	Name = "Tp to safe spot",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-520, -198, 2915)
+  	end    
+})
+local Tab = Window:MakeTab({
+	Name = "Combat",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Stop the remote loops so not lag",
+	Callback = function()
+      		getgenv().loop = false;
+      		getgenv().loop2 = false;
+  	end    
+})
+Tab:AddTextbox({
+	Name = "Player to hit",
+	Default = "plr name",
+	TextDisappear = false,
+	Callback = function(v)
+		getgenv().loop = true;
+		while true do
+			wait()
+local args = {
+    [1] = "heavy",
+    [2] = game:GetService("Players")[v].Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
+if not getgenv().loop then break end
+end
+end	  
+})
+Tab:AddTextbox({
+	Name = "Kill aura but teleports same thing blatant",
+	Default = "plr name",
+	TextDisappear = false,
+	Callback = function(r)
+		getgenv().loop2 = true;
+		while true do
+			wait()
+local args = {
+    [1] = "heavy",
+    [2] = game:GetService("Players")[r].Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[r].Character.HumanoidRootPart.CFrame
+if not getgenv().loop2 then break end
+end
+end	  
+})
+local Tab3 = Window:MakeTab({
+	Name = "Food stuff",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab3:AddButton({
+	Name = "Tp to food larvae",
+	Callback = function()
+      		for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+      			if v.Name == "t12" then
+      				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+				end
+			end
+  	end    
+})
+Tab3:AddToggle({
+	Name = "Auto get food as an egg",
+	Default = false,
+	Callback = function(bool)
+		getgenv().loop3 = bool 
+		while getgenv().loop3 == true do
+			wait(0.1)
+					for i,v in pairs(workspace:GetDescendants()) do
+			if v:IsA("ClickDetector") then
+				fireclickdetector(v)
+			end
+		end
+		end
+	end    
+})
+Tab3:AddToggle({
+	Name = "Auto Hit food Larvae food btw spam tp to food",
+	Default = false,
+	Callback = function(bool1)
+		getgenv().loop4 = bool1 
+		while getgenv().loop4 == true do
+			wait(0.1)
+local args = {
+    [1] = "heavy",
+    [2] = workspace.AI.Larvae.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
+
+		end
+	end    
+})
+local Tab5 = Window:MakeTab({
+	Name = "Auto farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab4:AddToggle({
+	Name = "Autofarm Larvae food",
+	Default = false,
+	Callback = function(bool)
+				getgenv().loop5 = bool
+		while getgenv().loop5 == true do
+			wait(0.1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.AI.Larvae.t12.CFrame
+local args = {
+    [1] = "heavy",
+    [2] = workspace.AI.Larvae.Humanoid
+}
+
+game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
+end
+end
+})
