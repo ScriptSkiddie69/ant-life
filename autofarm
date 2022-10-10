@@ -2,6 +2,7 @@
 --Made by gaming#5933 the most shittiest coder ever
 --join butterhub btw its a cool server
 --Thank you for using
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
@@ -102,7 +103,7 @@ Tab3:AddToggle({
 	end    
 })
 Tab3:AddToggle({
-	Name = "Auto Hit food Larvae food",
+	Name = "Auto Hit food Larvae food btw spam tp to food",
 	Default = false,
 	Callback = function(bool1)
 		getgenv().loop4 = bool1 
@@ -137,6 +138,10 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
+if game.Workspace.AI:FindFirstChild("Larvae") then
+	print("exist")
+end
 end
 end
 })
+
