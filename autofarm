@@ -103,7 +103,7 @@ Tab3:AddToggle({
 	end    
 })
 Tab3:AddToggle({
-	Name = "Auto Hit food Larvae food btw spam tp to food",
+	Name = "Auto Hit food Larvae food",
 	Default = false,
 	Callback = function(bool1)
 		getgenv().loop4 = bool1 
