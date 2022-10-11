@@ -46,6 +46,7 @@ local Tab4 = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+wait()
 Tab4:AddSlider({
 	Name = "Walkspeed",
 	Min = 20,
@@ -55,9 +56,11 @@ Tab4:AddSlider({
 	Increment = 1,
 	ValueName = "Walkspeed",
 	Callback = function(Value5)
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value5
+		    game.Players.LocalPlayer.Character("Humanoid").WalkSpeed = Value5 
+
 	end    
 })
+wait()
 Tab4:AddSlider({
 	Name = "JumpPower",
 	Min = 50,
@@ -67,7 +70,8 @@ Tab4:AddSlider({
 	Increment = 1,
 	ValueName = "Real",
 	Callback = function(Value4)
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value4
+			game.Players.LocalPlayer.Character("Humanoid").JumpPower = Value4
+
 	end    
 })
 Tab4:AddButton({
