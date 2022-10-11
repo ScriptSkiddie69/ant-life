@@ -71,6 +71,21 @@ Tab4:AddButton({
       		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-520, -198, 2915)
   	end    
 })
+Tab4:AddButton({
+	Name = "Esp/didnt make this one so credits to the owner",
+	Callback = function()
+getgenv().enabled = true --Toggle on/off
+getgenv().uselocalplayer = false --Choose whether the ESP highlights LocalPlayer or not
+getgenv().filluseteamcolor = false --Toggle fill color using player team color on/off
+getgenv().outlineuseteamcolor = true --Toggle outline color using player team color on/off
+getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
+getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
+getgenv().filltrans = 0 --Change fill transparency
+getgenv().outlinetrans = 0 --Change outline transparency
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zntly/highlight-esp/main/esp.lua"))()
+  	end    
+})
 local Tab = Window:MakeTab({
 	Name = "Combat",
 	Icon = "rbxassetid://4483345998",
