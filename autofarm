@@ -7,6 +7,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local mt = getrawmetatable(game)
+
 setreadonly(mt, false)
 local old = mt.__index
 
@@ -30,23 +31,16 @@ mt.__index = function(o, k)
  return old(o, k)
 end
 OrionLib:MakeNotification({
-	Name = "Spawn before executing it please",
-	Content = "Spawn before executing",
-	Image = "rbxassetid://4483345998",
-	Time = 10
-})
-OrionLib:MakeNotification({
 	Name = "Thanks for using",
 	Content = "Made by gaming#5933 join butter hub cuz its a very cool pro server",
 	Image = "rbxassetid://4483345998",
-	Time = 9
+	Time = 69
 })
 local Tab4 = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-wait()
 Tab4:AddSlider({
 	Name = "Walkspeed",
 	Min = 20,
@@ -56,11 +50,9 @@ Tab4:AddSlider({
 	Increment = 1,
 	ValueName = "Walkspeed",
 	Callback = function(Value5)
-		    game.Players.LocalPlayer.Character("Humanoid").WalkSpeed = Value5 
-
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value5
 	end    
 })
-wait()
 Tab4:AddSlider({
 	Name = "JumpPower",
 	Min = 50,
@@ -70,29 +62,13 @@ Tab4:AddSlider({
 	Increment = 1,
 	ValueName = "Real",
 	Callback = function(Value4)
-			game.Players.LocalPlayer.Character("Humanoid").JumpPower = Value4
-
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value4
 	end    
 })
 Tab4:AddButton({
 	Name = "Tp to safe spot",
 	Callback = function()
       		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-520, -198, 2915)
-  	end    
-})
-Tab4:AddButton({
-	Name = "Esp/didnt make this one so credits to the owner",
-	Callback = function()
-getgenv().enabled = true --Toggle on/off
-getgenv().uselocalplayer = false --Choose whether the ESP highlights LocalPlayer or not
-getgenv().filluseteamcolor = false --Toggle fill color using player team color on/off
-getgenv().outlineuseteamcolor = false --Toggle outline color using player team color on/off
-getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
-getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
-getgenv().filltrans = 0 --Change fill transparency
-getgenv().outlinetrans = 0 --Change outline transparency
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/zntly/highlight-esp/main/esp.lua"))()
   	end    
 })
 local Tab = Window:MakeTab({
