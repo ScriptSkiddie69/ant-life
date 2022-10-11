@@ -12,7 +12,7 @@ setreadonly(mt, false)
 local old = mt.__index
 
 mt.__index = function(o, k)
- if tostring(o) == "Humanoid" and tostring(k) == "WalkSpeed" then --good old bypasser but works
+ if tostring(o) == "Humanoid" and tostring(k) == "WalkSpeed" then
      return 20 --default walkspeed
    end
 
@@ -24,7 +24,7 @@ setreadonly(mt, false)
 local old = mt.__index
 
 mt.__index = function(o, k) 
- if tostring(o) == "Humanoid" and tostring(k) == "JumpPower" then --good old bypasser but works
+ if tostring(o) == "Humanoid" and tostring(k) == "JumpPower" then 
      return 50 --default jumppower 
    end
 
