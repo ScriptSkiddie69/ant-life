@@ -5,7 +5,7 @@
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT AUTOFARM!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 OrionLib:MakeNotification({
 	Name = "Thanks for using",
 	Content = "Made by gaming#5933 join butter hub cuz its a very cool pro server",
