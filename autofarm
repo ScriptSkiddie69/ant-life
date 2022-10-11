@@ -7,7 +7,6 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local mt = getrawmetatable(game)
-
 setreadonly(mt, false)
 local old = mt.__index
 
@@ -31,10 +30,16 @@ mt.__index = function(o, k)
  return old(o, k)
 end
 OrionLib:MakeNotification({
+	Name = "Spawn before executing it please",
+	Content = "Spawn before executing",
+	Image = "rbxassetid://4483345998",
+	Time = 10
+})
+OrionLib:MakeNotification({
 	Name = "Thanks for using",
 	Content = "Made by gaming#5933 join butter hub cuz its a very cool pro server",
 	Image = "rbxassetid://4483345998",
-	Time = 69
+	Time = 9
 })
 local Tab4 = Window:MakeTab({
 	Name = "Player",
@@ -77,7 +82,7 @@ Tab4:AddButton({
 getgenv().enabled = true --Toggle on/off
 getgenv().uselocalplayer = false --Choose whether the ESP highlights LocalPlayer or not
 getgenv().filluseteamcolor = false --Toggle fill color using player team color on/off
-getgenv().outlineuseteamcolor = true --Toggle outline color using player team color on/off
+getgenv().outlineuseteamcolor = false --Toggle outline color using player team color on/off
 getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
 getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
 getgenv().filltrans = 0 --Change fill transparency
