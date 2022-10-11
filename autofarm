@@ -130,7 +130,7 @@ Tab5:AddToggle({
 	Callback = function(bool)
 				getgenv().loop5 = bool
 		while getgenv().loop5 == true do
-			wait(0.1)
+			wait()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.AI.Larvae.t12.CFrame
 local args = {
     [1] = "heavy",
@@ -144,4 +144,3 @@ end
 end
 end
 })
-
