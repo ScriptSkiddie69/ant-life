@@ -4,7 +4,7 @@
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "REAL JJSPLOIT KILLAURA!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Spawn before executing a simple autofarm for antlife!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local mt = getrawmetatable(game)
 
 setreadonly(mt, false)
