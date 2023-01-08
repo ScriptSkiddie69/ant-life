@@ -1,10 +1,13 @@
 --Made by gaming#5933 the most shittiest coder ever
 --join butterhub btw its a cool server
 --Thank you for using
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "Spawn before executing a simple autofarm for antlife!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "SPAWN TO LOAD IN THE SCRIPT!!!!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Antlife script", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local mt = getrawmetatable(game)
 
 setreadonly(mt, false)
@@ -29,9 +32,18 @@ mt.__index = function(o, k)
 
  return old(o, k)
 end
+local function getplrname(shortName)
+   shortName = string.lower(shortName)
+   for _,Player in pairs(game.Players:GetPlayers()) do
+       local playerName = string.lower(Player.Name) and string.lower(Player.DisplayName)
+       if string.match(playerName, "^"..shortName) then
+           return Player
+       end
+   end
+end
 OrionLib:MakeNotification({
 	Name = "Thanks for using",
-	Content = "Made by gaming#5933 join butter hub cuz its a very cool pro server",
+	Content = "Updated in 1/8/2023",
 	Image = "rbxassetid://4483345998",
 	Time = 69
 })
@@ -101,7 +113,7 @@ end
 end	  
 })
 Tab:AddTextbox({
-	Name = "Kill aura but teleports same thing blatant",
+	Name = "Kill aura but teleports same thing",
 	Default = "plr name",
 	TextDisappear = false,
 	Callback = function(r)
@@ -110,11 +122,11 @@ Tab:AddTextbox({
 			wait()
 local args = {
     [1] = "heavy",
-    [2] = game:GetService("Players")[r].Character.Humanoid
+    [2] = getplrname(r).Character.Humanoid
 }
 
 game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[r].Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getplrname(r).Character.HumanoidRootPart.CFrame
 if not getgenv().loop2 then break end
 end
 end	  
@@ -150,7 +162,7 @@ Tab3:AddToggle({
 	end    
 })
 Tab3:AddToggle({
-	Name = "Auto Hit food Larvae food",
+	Name = "Auto Hit food Larvae food not the ant food",
 	Default = false,
 	Callback = function(bool1)
 		getgenv().loop4 = bool1 
