@@ -1,6 +1,4 @@
---Made by gaming#5933 the most shittiest coder ever
---join butterhub btw its a cool server
---Thank you for using
+--Made by gaming#5410 the most shittiest coder ever
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "SPAWN TO LOAD IN THE SCRIPT!!!!", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
@@ -8,30 +6,6 @@ repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlaye
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "Antlife script", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-local mt = getrawmetatable(game)
-
-setreadonly(mt, false)
-local old = mt.__index
-
-mt.__index = function(o, k)
- if tostring(o) == "Humanoid" and tostring(k) == "WalkSpeed" then
-     return 20 --default walkspeed
-   end
-
- return old(o, k)
-end
-local mt = getrawmetatable(game)
-
-setreadonly(mt, false)
-local old = mt.__index
-
-mt.__index = function(o, k) 
- if tostring(o) == "Humanoid" and tostring(k) == "JumpPower" then 
-     return 50 --default jumppower 
-   end
-
- return old(o, k)
-end
 local function getplrname(shortName)
    shortName = string.lower(shortName)
    for _,Player in pairs(game.Players:GetPlayers()) do
@@ -40,6 +14,22 @@ local function getplrname(shortName)
            return Player
        end
    end
+end
+local function yes()
+for i, v in pairs(game.Players:GetPlayers()) do
+   if v.Character and v.Character.Parent and v.Character.Parent.Parent and v.Character.Parent.Parent ~= game.Players.LocalPlayer.Character.Parent.Parent then
+   	local magnitude = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude
+   	if magnitude < math.huge then
+   		print(i,v)
+local args = {
+    [1] = "heavy",
+    [2] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Bite1"):FireServer(unpack(args))
+end
+	end
+    end
 end
 OrionLib:MakeNotification({
 	Name = "Thanks for using",
@@ -52,28 +42,47 @@ local Tab4 = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+local bhopspeed
 Tab4:AddSlider({
-	Name = "Walkspeed",
+	Name = "Speed",
 	Min = 20,
 	Max = 500,
 	Default = 20,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
-	ValueName = "Walkspeed",
+	ValueName = "Bhop Speed",
 	Callback = function(Value5)
-			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value5
+			bhopspeed = Value5
 	end    
 })
-Tab4:AddSlider({
-	Name = "JumpPower",
-	Min = 50,
-	Max = 300,
-	Default = 50,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Real",
-	Callback = function(Value4)
-			game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value4
+Tab4:AddToggle({
+	Name = "Bhop",
+	Default = false,
+	Callback = function(Bool69)
+		getgenv().kg = Bool69
+		local UserInputService = game:GetService('UserInputService')
+		while getgenv().kg do
+    				game:GetService('RunService').Heartbeat:Wait()
+				if game:GetService('UserInputService'):IsKeyDown("W") or game:GetService('UserInputService'):IsKeyDown("A") or game:GetService('UserInputService'):IsKeyDown("S") or game:GetService('UserInputService'):IsKeyDown("D") and game.Players.LocalPlayer.Character then      
+					local add = 0   
+					local Root = game.Players.LocalPlayer.Character.HumanoidRootPart          
+					if UserInputService:IsKeyDown("A") then add = 90 end      
+					if UserInputService:IsKeyDown("S") then add = 180 end      
+					if UserInputService:IsKeyDown("D") then add = 270 end      
+					if UserInputService:IsKeyDown("A") and UserInputService:IsKeyDown("W") then add = 45 end      
+					if UserInputService:IsKeyDown("D") and UserInputService:IsKeyDown("W") then add = 315 end      
+					if UserInputService:IsKeyDown("D") and UserInputService:IsKeyDown("S") then add = 225 end      
+					if UserInputService:IsKeyDown("A") and UserInputService:IsKeyDown("S") then add = 145 end   
+					local x, y, z = workspace.CurrentCamera.CFrame:ToOrientation()        
+					local rot = CFrame.new(workspace.CurrentCamera.CFrame.Position) * CFrame.Angles(0,y,0) * CFrame.Angles(0,math.rad(add),0)      
+						Root.CFrame = Root.CFrame + Vector3.new(rot.LookVector.X,0,rot.LookVector.Z) * bhopspeed/50            
+				end
+    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+        if game.Players.LocalPlayer.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall then
+            game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+        end
+    end
+end
 	end    
 })
 Tab4:AddButton({
@@ -101,7 +110,7 @@ Tab:AddTextbox({
 	Callback = function(v)
 		getgenv().loop = true;
 		while true do
-			wait()
+			game:GetService('RunService').Heartbeat:Wait()
 local args = {
     [1] = "heavy",
     [2] = game:GetService("Players")[v].Character.Humanoid
@@ -112,24 +121,69 @@ if not getgenv().loop then break end
 end
 end	  
 })
-Tab:AddTextbox({
-	Name = "Kill aura but teleports same thing",
-	Default = "plr name",
-	TextDisappear = false,
+Tab:AddToggle({
+	Name = "KillAura",
+	Default = false,
 	Callback = function(r)
-		getgenv().loop2 = true;
-		while true do
-			wait()
+		getgenv().loop1337= r
+		pcall(function()
+while getgenv().loop1337 do game:GetService('RunService').Heartbeat:Wait()
+for i, v in pairs(game.Players:GetPlayers()) do
+   if v.Character and v.Character.Parent and v.Character.Parent.Parent and v.Character.Parent.Parent ~= game.Players.LocalPlayer.Character.Parent.Parent then
+   	local magnitude = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude
+   	if magnitude < 30 then
+   		print(i,v)
 local args = {
     [1] = "heavy",
-    [2] = getplrname(r).Character.Humanoid
+    [2] = v.Character.Humanoid
 }
 
-game:GetService("ReplicatedStorage").Remotes.Bite1:FireServer(unpack(args))
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getplrname(r).Character.HumanoidRootPart.CFrame
-if not getgenv().loop2 then break end
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Bite1"):FireServer(unpack(args))
 end
-end	  
+	end
+    end
+end
+end)
+	end    
+})
+local trigger = 30
+Tab:AddSlider({
+	Name = "TpKillAura Distance/Stud To Trigger",
+	Min = 0,
+	Max = 100,
+	Default = 30,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Distance",
+	Callback = function(gmyt)
+		trigger = gmyt
+	end    
+})
+Tab:AddToggle({
+	Name = "TpKillAura",
+	Default = false,
+	Callback = function(r)
+		getgenv().loop1337= r
+		pcall(function()
+while getgenv().loop1337 do game:GetService('RunService').Heartbeat:Wait()
+for i, v in pairs(game.Players:GetPlayers()) do
+   if v.Character and v.Character.Parent and v.Character.Parent.Parent and v.Character.Parent.Parent ~= game.Players.LocalPlayer.Character.Parent.Parent then
+   	local magnitude = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude
+   	if magnitude < trigger then
+   		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Character.HumanoidRootPart.CFrame.X,v.Character.HumanoidRootPart.CFrame.Y-2,v.Character.HumanoidRootPart.CFrame.Z)
+   		print(i,v)
+local args = {
+    [1] = "heavy",
+    [2] = v.Character.Humanoid
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Bite1"):FireServer(unpack(args))
+end
+	end
+    end
+end
+end)
+	end    
 })
 local Tab3 = Window:MakeTab({
 	Name = "Food stuff",
@@ -188,8 +242,8 @@ Tab5:AddToggle({
 	Default = false,
 	Callback = function(bool)
 				getgenv().loop5 = bool
-		while getgenv().loop5 == true do
-			wait()
+		while getgenv().loop5 do
+			game:GetService('RunService').Heartbeat:Wait()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.AI.Larvae.t12.CFrame
 local args = {
     [1] = "heavy",
@@ -202,5 +256,32 @@ if game.Workspace.AI:FindFirstChild("Larvae") then
 end
 end
 end
+})
+Tab5:AddToggle({
+	Name = "Autofarm Players/AutoKill All enable killaura cause bug",
+	Default = false,
+	Callback = function(fff)
+		getgenv().loop13437 = fff
+		pcall(function()
+while getgenv().loop13437 do game:GetService('RunService').Heartbeat:Wait()
+for i, v in pairs(game.Players:GetPlayers()) do
+   if v.Character and v.Character.Parent and v.Character.Parent.Parent and v.Character.Parent.Parent ~= game.Players.LocalPlayer.Character.Parent.Parent then
+   	local magnitude = (v.Character.Head.Position - game.Players.LocalPlayer.Character.Head.Position).Magnitude
+   	if magnitude < math.huge then
+   		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Character.HumanoidRootPart.CFrame.X,v.Character.HumanoidRootPart.CFrame.Y-2,v.Character.HumanoidRootPart.CFrame.Z)
+   		print(i,v)
+yes()
+end
+	end
+    end
+end
+end)
+	end    
+})
+Tab5:AddButton({
+	Name = "etest",
+	Callback = function()
+      		yes()
+  	end    
 })
 loadstring(game:HttpGet('https://raw.githubusercontent.com/ScriptSkiddie69/aa/main/aa'))()
